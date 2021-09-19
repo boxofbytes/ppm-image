@@ -1,10 +1,14 @@
+/* include guard */
+#ifndef PPM_HPP
+#define PPM_HPP
+
 /* libraries */
 #include <fstream>
 #include <sstream>
 #include <vector>
 #include <stdio.h>
 #include <string>
-#include <conslib.hpp>
+#include <cassert>
 
 /* macros */
 #define PPM_BEGIN 3
@@ -32,9 +36,7 @@ struct image {
 /* image width and height properties as well as an image buffer         */
 image image_open(const std::string& image_path) {
    std::ifstream file(image_path);
-   if(!file.is_open()) {
-      printf("ERROR: Unable to open file.");
-   }
+   assert(file.is_open() != false);
    std::ostringstream string_stream;
    string_stream << file.rdbuf();
    const std::string& str = string_stream.str();
@@ -112,3 +114,5 @@ image image_open(const std::string& image_path) {
    returned_image.height = image_height;
    return returned_image;
 }
+
+#endif
