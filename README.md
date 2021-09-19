@@ -1,6 +1,6 @@
 # ppm-image
 A PPM image parser with only one header file. The header file is in `/src/` and to use it, you just include it.
-There is an `image_open` function, it returns an `image` structure with a width, height, and a buffer. The buffer is a `std::vector` of rgb`  structures, and each element is one pixel left to right top to bottom. The `rgb` structures have an r, g, and b value.
+There is an `image_open` function, it returns an `image` structure with a width, height, and a buffer. The buffer is a `std::vector` of `rgb` structures, and each element is one pixel left to right top to bottom. The `rgb` structures have an r, g, and b value.
 # dependencies
 It only uses the C++ standard library, so there are no dependencies.
 # development
