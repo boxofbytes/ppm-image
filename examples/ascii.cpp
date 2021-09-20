@@ -1,6 +1,6 @@
 /* libraries */
 #include <assert.h>
-#include "ppm.hpp"
+#include <ppm.hpp>
 #include <stdio.h>
 #include <string.h>
 
@@ -9,11 +9,11 @@ int main(int argc, const char* argv[]) {
 	const image cool_image = image_open("./ppmtest.ppm");
 
 	const char pixel_template[] = "\033[0;38;2;%i;%i;%im██";
-	const size_t max_pixel_length = 28; 					/* maximum size of a pixel without null terminator */
+	const size_t max_pixel_length = 28; 							/* maximum size of a pixel without null terminator */
 	const size_t buffer_length =
 		max_pixel_length * cool_image.height * cool_image.width +
-		cool_image.width + 						/* newlines */ 
-		1; 								/* null terminator */
+		cool_image.width + 								/* newlines */ 
+		1; 										/* null terminator */
 	size_t index = 0;
 
 	char* buffer = new char[buffer_length];
