@@ -6,7 +6,6 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <stdio.h>
 #include <string>
 #include <cassert>
 
@@ -86,10 +85,12 @@ image image_open(const std::string& image_path) {
    std::vector<rgb> pixel_buffer;
    rgb current_pixel;
    current_pixel.clear();
+   ++index;
+   uint64_t original_index = index;
    for(; index <= buffer.size(); index++) {
-      uint8_t rgb_index = index % 3;
+      uint8_t rgb_index = (index - original_index) % 3;
       if(rgb_index == 0) {
-         if(!first_pixel_found) {
+         if(first_pixel_found == false) {
             first_pixel_found = true;
          } else {
             pixel_buffer.push_back(current_pixel);
