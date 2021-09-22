@@ -26,9 +26,11 @@ struct rgb {
 
 /* image structure */
 struct image {
+   public:
    std::vector<rgb> buffer;
    uint64_t width;
    uint64_t height;
+   uint16_t original_index;
 };
 
 /* function for opening a PPM image, it returns an image class with the */
@@ -113,7 +115,22 @@ image image_open(const std::string& image_path) {
    returned_image.buffer = pixel_buffer;
    returned_image.width = image_width;
    returned_image.height = image_height;
+   returned_image.original_index = original_index;
    return returned_image;
+}
+
+/* function for inverting an images colors */
+void image_invert(image& given_image) {
+   rgb new_pixel;
+   rgb current_pixel;
+   for(uint64_t i = 0; i < given_image.width * given_image.height; i++) {
+      current_pixel = given_image.buffer[i];
+      new_pixel.clear();
+      new_pixel.r = 255 - current_pixel.r;
+      new_pixel.g = 255 - current_pixel.g;
+      new_pixel.b = 255 - current_pixel.b;
+      given_image.buffer[i] = new_pixel;
+   }
 }
 
 #endif
