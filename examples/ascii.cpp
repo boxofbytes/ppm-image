@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <string.h>
 
+/* ppm namespace */
+using namespace ppm;
+
 /* main function */
 int main(int argc, const char* argv[]) {
 	const image cool_image = image_open("./ppmtest.ppm");
